@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — OYT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #080810; --card: #121220; --border: rgba(255,255,255,0.07);
+            --text: #F2F2F7; --text-2: rgba(242,242,247,0.6); --text-3: rgba(242,242,247,0.35);
+            --accent: #F59E0B; --gradient: linear-gradient(135deg,#F59E0B,#EF4444);
+        }
+        body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+        nav {
+            position:sticky; top:0; z-index:10;
+            padding:0 24px; height:60px; display:flex; align-items:center;
+            background:rgba(8,8,16,.9); backdrop-filter:blur(20px);
+            border-bottom:1px solid var(--border);
+        }
+        .nav-inner { max-width:760px; width:100%; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        .nav-logo { font-size:18px; font-weight:900; text-decoration:none; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .nav-back { font-size:14px; color:var(--text-2); text-decoration:none; transition:color .2s; }
+        .nav-back:hover { color:var(--text); }
+        main { max-width:760px; margin:0 auto; padding:64px 24px 100px; }
+        .doc-title { font-size:clamp(28px,4vw,40px); font-weight:900; letter-spacing:-1px; margin-bottom:8px; }
+        .doc-updated { font-size:13px; color:var(--text-3); margin-bottom:48px; }
+        h2 { font-size:18px; font-weight:700; margin:40px 0 10px; color:var(--text); }
+        p { font-size:15px; color:var(--text-2); margin-bottom:14px; }
+        ul { padding-left:20px; margin-bottom:14px; }
+        li { font-size:15px; color:var(--text-2); margin-bottom:6px; }
+        a { color:var(--accent); }
+        .highlight { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin:24px 0; }
+        .highlight p { margin:0; font-size:15px; }
+        footer { border-top:1px solid var(--border); padding:32px 24px; text-align:center; font-size:13px; color:var(--text-3); }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a class="nav-logo" href="index.html">OYT</a>
+        <a class="nav-back" href="index.html">← Back to oytapp.com</a>
+    </div>
+</nav>
+<main>
+    <h1 class="doc-title">Privacy Policy</h1>
+    <p class="doc-updated">Last updated: <!-- DATE PLACEHOLDER --> January 1, 2025</p>
+
+    <div class="highlight">
+        <p><strong>The short version:</strong> OYT stores all your data on your device. Nothing is sent to external servers. Your location history, time blocks, and journal entries never leave your iPhone.</p>
+    </div>
+
+    <h2>1. Who We Are</h2>
+    <p>OYT ("Own Your Time") is an iOS application developed by Jake Wilson. If you have questions about this policy, contact us at <a href="mailto:support@oytapp.com">support@oytapp.com</a>.</p>
+
+    <h2>2. Data We Collect</h2>
+    <p>OYT requests access to the following data types on your device:</p>
+    <ul>
+        <li><strong>Precise Location (Always):</strong> Used to detect when you arrive at or leave your saved zones and to log time automatically in the background.</li>
+        <li><strong>Motion &amp; Fitness:</strong> Used to distinguish between driving, walking, and stationary states for accurate activity detection.</li>
+        <li><strong>Health Data (Read-only):</strong> Step count, sleep analysis, and workout data from Apple Health — used to enrich and categorize your time blocks (e.g., classifying a transit block as a walk if step count is high).</li>
+        <li><strong>Calendar:</strong> Read-only access to display your planned calendar events alongside your tracked time.</li>
+        <li><strong>Camera &amp; Microphone:</strong> Used only within the Journal feature — to scan and extract text from photos, or transcribe voice notes. Media is stored locally and never uploaded.</li>
+        <li><strong>Photos:</strong> Used only within the Journal feature to attach images to journal entries. Stored locally on your device.</li>
+    </ul>
+
+    <h2>3. How We Use Your Data</h2>
+    <p>All data collected by OYT is used exclusively to power features within the app:</p>
+    <ul>
+        <li>Location data is used to detect zone arrivals/departures and create time blocks.</li>
+        <li>Motion data is used to improve tracking accuracy and detect walking vs. driving.</li>
+        <li>Health data is used to enrich time blocks with activity context.</li>
+        <li>Camera, microphone, and photo data is used only when you explicitly activate Journal features.</li>
+    </ul>
+    <p>We do not use your data for advertising, profiling, or any purpose outside the app's core tracking functionality.</p>
+
+    <h2>4. Data Storage &amp; Security</h2>
+    <p>All data is stored locally on your device using Apple's SwiftData framework and iCloud (if you have iCloud enabled for the app). <strong>OYT does not operate any servers or databases that receive your personal data.</strong></p>
+    <p>Your data is protected by your device's built-in security (Face ID, passcode encryption, Secure Enclave).</p>
+
+    <h2>5. Third-Party Sharing</h2>
+    <p>OYT does not sell, share, or transmit your personal data to any third parties. We do not use third-party analytics SDKs, advertising networks, or crash reporting services that collect personal data.</p>
+
+    <h2>6. Data Retention &amp; Deletion</h2>
+    <p>Your data lives on your device for as long as you have the app installed. To delete all data, simply delete the OYT app from your iPhone. Deleting the app permanently removes all stored time blocks, zones, journal entries, and settings.</p>
+
+    <h2>7. Children's Privacy</h2>
+    <p>OYT is not directed at children under the age of 13 and we do not knowingly collect data from children.</p>
+
+    <h2>8. Changes to This Policy</h2>
+    <p>If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page and notify users via an in-app notice on the next app launch.</p>
+
+    <h2>9. Contact</h2>
+    <p>Questions or concerns about your privacy? Reach us at <a href="mailto:support@oytapp.com">support@oytapp.com</a>.</p>
+</main>
+<footer>© 2025 OYT — Own Your Time &nbsp;·&nbsp; <a href="mailto:support@oytapp.com">support@oytapp.com</a></footer>
+</body>
+</html>
