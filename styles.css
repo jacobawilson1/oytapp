@@ -49,6 +49,17 @@ nav {
     color: var(--text-primary); letter-spacing: -0.5px;
 }
 
+.logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+.footer-logo-img {
+    height: 28px;
+    opacity: 0.85;
+}
+
 .nav-links { display: flex; gap: 24px; align-items: center; }
 
 .nav-links a {
@@ -117,16 +128,6 @@ nav {
     margin-top: 20px !important;
 }
 
-/* Hero Image */
-.hero-image-container {
-    margin-top: 64px; display: flex; justify-content: center;
-}
-.app-screenshot {
-    width: 100%; max-width: 320px;
-    border-radius: 32px;
-    border: 8px solid var(--surface-color);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.9);
-}
 
 /* ── Section Shared ──────────────────────────────────────────────────── */
 .section {
