@@ -8,10 +8,9 @@
     --border-color:   rgba(255,255,255,0.09);
     --border-hover:   rgba(255,255,255,0.18);
 
-    /* OYT Brand Amber — pulled from the app's accent */
-    --accent:         #FF9500;
-    --accent-dim:     rgba(255, 149, 0, 0.18);
-    --accent-glow:    rgba(255, 149, 0, 0.22);
+    --accent:         #FFFFFF;
+    --accent-dim:     rgba(255, 255, 255, 0.08);
+    --accent-glow:    rgba(255, 255, 255, 0.07);
 }
 
 * {
@@ -23,13 +22,11 @@
 html { scroll-behavior: smooth; }
 
 /* ── Background Depth ────────────────────────────────────────────────── */
-/* Subtle warm-amber tint at the very top fades to pure black.
-   Ties the page to the brand colour without being loud.            */
 body {
     background:
         radial-gradient(ellipse 80% 40% at 50% 0%,
-            rgba(255,149,0,0.07) 0%,
-            transparent 70%),
+            rgba(255,255,255,0.04) 0%,
+            transparent 65%),
         #000000;
     background-attachment: fixed;
     color: var(--text-primary);
@@ -84,7 +81,7 @@ nav {
 }
 .nav-cta:hover {
     background: var(--surface-hover);
-    border-color: var(--accent);
+    border-color: var(--border-hover);
 }
 
 /* ── Hero ────────────────────────────────────────────────────────────── */
@@ -106,10 +103,7 @@ nav {
     font-weight: 800; letter-spacing: -2.5px; line-height: 1.05;
     margin-bottom: 24px;
 }
-/* The accent word in the hero headline */
-.hero h1 .accent-word {
-    color: var(--accent);
-}
+/* accent-word: no colour override — inherits white like the rest of the headline */
 .hero p {
     font-size: 20px; color: var(--text-secondary);
     max-width: 580px; margin: 0 auto 40px; line-height: 1.5;
@@ -118,18 +112,19 @@ nav {
 
 /* ── Buttons ─────────────────────────────────────────────────────────── */
 .btn-primary {
-    background: var(--accent);
+    background: #FFFFFF;
     color: #000000;
     padding: 16px 32px; border-radius: 999px;
     font-weight: 700; font-size: 17px;
     text-decoration: none; display: inline-flex; align-items: center;
-    box-shadow: 0 4px 24px var(--accent-glow);
+    box-shadow: 0 4px 24px rgba(255,255,255,0.12);
     transition: transform 0.25s cubic-bezier(0.25,0.8,0.25,1),
-                box-shadow 0.25s ease;
+                box-shadow 0.25s ease, opacity 0.25s ease;
 }
 .btn-primary:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 36px rgba(255,149,0,0.38);
+    box-shadow: 0 8px 36px rgba(255,255,255,0.2);
+    opacity: 0.92;
 }
 .btn-secondary {
     background: var(--surface-color);
@@ -204,9 +199,9 @@ nav {
 
 .badge {
     position: absolute; top: 32px; right: 32px;
-    background: var(--accent-dim);
-    color: var(--accent);
-    border: 1px solid rgba(255,149,0,0.3);
+    background: rgba(255,255,255,0.1);
+    color: #FFFFFF;
+    border: 1px solid rgba(255,255,255,0.2);
     padding: 4px 10px; border-radius: 12px;
     font-size: 12px; font-weight: 700;
 }
@@ -340,22 +335,21 @@ nav {
 }
 .pricing-card:hover { border-color: var(--border-hover); }
 
-/* Featured card: amber border + very subtle warm inner gradient */
 .pricing-card.featured {
-    border-color: rgba(255,149,0,0.5);
-    background: linear-gradient(160deg, rgba(255,149,0,0.05) 0%, transparent 60%);
-    box-shadow: 0 0 40px rgba(255,149,0,0.07);
+    border-color: rgba(255,255,255,0.35);
+    background: linear-gradient(160deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+    box-shadow: 0 0 40px rgba(255,255,255,0.04);
 }
 .pricing-card.featured:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 50px rgba(255,149,0,0.14);
+    border-color: rgba(255,255,255,0.55);
+    box-shadow: 0 0 50px rgba(255,255,255,0.08);
 }
 .popular-badge {
     position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-    background: var(--accent); color: #000;
+    background: #FFFFFF; color: #000000;
     padding: 6px 16px; border-radius: 20px;
     font-size: 13px; font-weight: 700;
-    box-shadow: 0 4px 12px var(--accent-glow);
+    box-shadow: 0 4px 12px rgba(255,255,255,0.15);
 }
 .pricing-card h3 { font-size: 18px; font-weight: 600; }
 .price {
@@ -372,7 +366,7 @@ nav {
 }
 .feature-list li::before {
     content: '✓'; position: absolute; left: 0;
-    color: var(--accent); font-weight: 700;
+    color: var(--text-secondary); font-weight: 700;
 }
 
 /* ── About ───────────────────────────────────────────────────────────── */
@@ -383,7 +377,7 @@ nav {
 .about-eyebrow {
     display: inline-block;
     font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
-    text-transform: uppercase; color: var(--accent);
+    text-transform: uppercase; color: var(--text-secondary);
     margin-bottom: 20px;
 }
 .about-text h2 {
@@ -427,7 +421,7 @@ nav {
     font-size: 44px; font-weight: 800;
     letter-spacing: -2px; line-height: 1;
     margin-bottom: 8px;
-    color: var(--accent);
+    color: var(--text-primary);
 }
 .stat-label { font-size: 14px; color: var(--text-secondary); line-height: 1.4; }
 
