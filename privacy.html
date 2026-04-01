@@ -4,98 +4,254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — OYT</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="OYT Privacy Policy. Your data stays on your device. No servers, no tracking.">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
         :root {
-            --bg: #080810; --card: #121220; --border: rgba(255,255,255,0.07);
-            --text: #F2F2F7; --text-2: rgba(242,242,247,0.6); --text-3: rgba(242,242,247,0.35);
-            --accent: #F59E0B; --gradient: linear-gradient(135deg,#F59E0B,#EF4444);
+            --bg:        #000000;
+            --surface:   #1C1C1E;
+            --border:    rgba(255,255,255,0.1);
+            --text:      #F2F2F7;
+            --text-2:    #8E8E93;
+            --text-3:    rgba(242,242,247,0.35);
         }
-        body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        /* Nav */
         nav {
-            position:sticky; top:0; z-index:10;
-            padding:0 24px; height:60px; display:flex; align-items:center;
-            background:rgba(8,8,16,.9); backdrop-filter:blur(20px);
-            border-bottom:1px solid var(--border);
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
         }
-        .nav-inner { max-width:760px; width:100%; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
-        .nav-logo { font-size:18px; font-weight:900; text-decoration:none; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-        .nav-back { font-size:14px; color:var(--text-2); text-decoration:none; transition:color .2s; }
-        .nav-back:hover { color:var(--text); }
-        main { max-width:760px; margin:0 auto; padding:64px 24px 100px; }
-        .doc-title { font-size:clamp(28px,4vw,40px); font-weight:900; letter-spacing:-1px; margin-bottom:8px; }
-        .doc-updated { font-size:13px; color:var(--text-3); margin-bottom:48px; }
-        h2 { font-size:18px; font-weight:700; margin:40px 0 10px; color:var(--text); }
-        p { font-size:15px; color:var(--text-2); margin-bottom:14px; }
-        ul { padding-left:20px; margin-bottom:14px; }
-        li { font-size:15px; color:var(--text-2); margin-bottom:6px; }
-        a { color:var(--accent); }
-        .highlight { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin:24px 0; }
-        .highlight p { margin:0; font-size:15px; }
-        footer { border-top:1px solid var(--border); padding:32px 24px; text-align:center; font-size:13px; color:var(--text-3); }
+        .nav-inner {
+            max-width: 760px; margin: 0 auto;
+            padding: 16px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-size: 20px; font-weight: 800;
+            color: var(--text); text-decoration: none; letter-spacing: -0.5px;
+        }
+        .nav-back {
+            font-size: 14px; color: var(--text-2);
+            text-decoration: none; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* Content */
+        main { max-width: 760px; margin: 0 auto; padding: 72px 24px 120px; }
+
+        .doc-eyebrow {
+            display: inline-block;
+            font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--text-2);
+            border: 1px solid var(--border);
+            padding: 5px 14px; border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .doc-title {
+            font-size: clamp(36px, 6vw, 52px);
+            font-weight: 800; letter-spacing: -2px; line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .doc-updated {
+            font-size: 13px; color: var(--text-3); margin-bottom: 48px;
+        }
+
+        /* Highlight box */
+        .highlight {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px; padding: 24px 28px;
+            margin-bottom: 48px;
+        }
+        .highlight-label {
+            font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--text-2);
+            margin-bottom: 10px;
+        }
+        .highlight p {
+            font-size: 16px; color: var(--text); line-height: 1.6; margin: 0;
+        }
+
+        /* Sections */
+        .policy-section { margin-bottom: 40px; }
+
+        h2 {
+            font-size: 20px; font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 14px; color: var(--text);
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        h2:first-of-type { border-top: none; padding-top: 0; }
+
+        p { font-size: 15px; color: var(--text-2); margin-bottom: 14px; line-height: 1.7; }
+
+        ul { padding-left: 0; margin-bottom: 14px; list-style: none; }
+        li {
+            font-size: 15px; color: var(--text-2); line-height: 1.6;
+            margin-bottom: 14px;
+            padding-left: 20px; position: relative;
+        }
+        li::before {
+            content: '·'; position: absolute; left: 4px;
+            color: var(--text-3); font-size: 18px; line-height: 1.4;
+        }
+        li strong { color: var(--text); font-weight: 600; }
+
+        a { color: var(--text); font-weight: 500; }
+        a:hover { opacity: 0.7; }
+
+        /* Permission cards */
+        .permission-grid {
+            display: grid; gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            margin: 20px 0 28px;
+        }
+        .perm-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 16px; padding: 20px;
+        }
+        .perm-icon { font-size: 22px; margin-bottom: 10px; }
+        .perm-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+        .perm-desc { font-size: 13px; color: var(--text-2); line-height: 1.5; margin: 0; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px; text-align: center;
+        }
+        .footer-inner {
+            max-width: 760px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .footer-logo { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 13px; color: var(--text-3); text-decoration: none; }
+        .footer-links a:hover { color: var(--text-2); }
+
+        @media (max-width: 600px) {
+            .permission-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; gap: 16px; }
+        }
     </style>
 </head>
 <body>
+
 <nav>
     <div class="nav-inner">
         <a class="nav-logo" href="index.html">OYT</a>
-        <a class="nav-back" href="index.html">← Back to oytapp.com</a>
+        <a class="nav-back" href="index.html">← oytapp.com</a>
     </div>
 </nav>
+
 <main>
+
+    <div class="doc-eyebrow">Legal</div>
     <h1 class="doc-title">Privacy Policy</h1>
-    <p class="doc-updated">Last updated: <!-- DATE PLACEHOLDER --> January 1, 2025</p>
+    <p class="doc-updated">Last updated: March 2026</p>
 
     <div class="highlight">
-        <p><strong>The short version:</strong> OYT stores all your data on your device. Nothing is sent to external servers. Your location history, time blocks, and journal entries never leave your iPhone.</p>
+        <div class="highlight-label">The Short Version</div>
+        <p>OYT stores all your data on your device. Nothing is sent to external servers. Your location history, time blocks, and journal entries never leave your iPhone.</p>
     </div>
 
     <h2>1. Who We Are</h2>
-    <p>OYT ("Own Your Time") is an iOS application developed by Jake Wilson. If you have questions about this policy, contact us at <a href="mailto:support@oytapp.com">support@oytapp.com</a>.</p>
+    <p>OYT ("Own Your Time") is an iOS application developed and maintained by Jake Wilson. If you have questions about this policy or how your data is handled, contact us at <a href="mailto:support@oytapp.com">support@oytapp.com</a>.</p>
 
-    <h2>2. Data We Collect</h2>
-    <p>OYT requests access to the following data types on your device:</p>
-    <ul>
-        <li><strong>Precise Location (Always):</strong> Used to detect when you arrive at or leave your saved zones and to log time automatically in the background.</li>
-        <li><strong>Motion &amp; Fitness:</strong> Used to distinguish between driving, walking, and stationary states for accurate activity detection.</li>
-        <li><strong>Health Data (Read-only):</strong> Step count, sleep analysis, and workout data from Apple Health — used to enrich and categorize your time blocks (e.g., classifying a transit block as a walk if step count is high).</li>
-        <li><strong>Calendar:</strong> Read-only access to display your planned calendar events alongside your tracked time.</li>
-        <li><strong>Camera &amp; Microphone:</strong> Used only within the Journal feature — to scan and extract text from photos, or transcribe voice notes. Media is stored locally and never uploaded.</li>
-        <li><strong>Photos:</strong> Used only within the Journal feature to attach images to journal entries. Stored locally on your device.</li>
-    </ul>
+    <h2>2. Data We Access</h2>
+    <p>OYT requests access to the following data types on your device. Each permission is used exclusively to power the feature described — nothing else.</p>
+
+    <div class="permission-grid">
+        <div class="perm-card">
+            <div class="perm-icon">📍</div>
+            <div class="perm-title">Precise Location (Always On)</div>
+            <p class="perm-desc">Detects when you arrive at or leave your saved zones and logs time automatically in the background. Required for the core tracking feature to work without you opening the app.</p>
+        </div>
+        <div class="perm-card">
+            <div class="perm-icon">🚶</div>
+            <div class="perm-title">Motion &amp; Fitness</div>
+            <p class="perm-desc">Distinguishes between driving, walking, and stationary states so your activity timeline is accurate. Uses Apple's CoreMotion framework — no raw sensor data leaves the device.</p>
+        </div>
+        <div class="perm-card">
+            <div class="perm-icon">❤️</div>
+            <div class="perm-title">Health Data (Read-Only)</div>
+            <p class="perm-desc">Reads step count, sleep analysis, and workout data from Apple Health to enrich and categorize your time blocks. OYT never writes to or modifies your Health data.</p>
+        </div>
+        <div class="perm-card">
+            <div class="perm-icon">📅</div>
+            <div class="perm-title">Calendar (Read-Only)</div>
+            <p class="perm-desc">Displays your planned calendar events alongside your tracked time. OYT never creates, edits, or deletes calendar events.</p>
+        </div>
+        <div class="perm-card">
+            <div class="perm-icon">📷</div>
+            <div class="perm-title">Camera &amp; Microphone</div>
+            <p class="perm-desc">Used only inside the Journal feature — to scan documents, capture photos, or record voice notes attached to your time blocks. Media is stored locally and never uploaded.</p>
+        </div>
+        <div class="perm-card">
+            <div class="perm-icon">🖼️</div>
+            <div class="perm-title">Photos</div>
+            <p class="perm-desc">Used only inside the Journal feature to attach images from your photo library to journal entries. Images are stored on your device only.</p>
+        </div>
+        <div class="perm-card">
+            <div class="perm-icon">🎙️</div>
+            <div class="perm-title">Speech Recognition</div>
+            <p class="perm-desc">Used inside the Journal feature to transcribe voice notes. Transcription is handled by Apple's on-device Speech framework and is not sent to third-party services.</p>
+        </div>
+    </div>
 
     <h2>3. How We Use Your Data</h2>
-    <p>All data collected by OYT is used exclusively to power features within the app:</p>
+    <p>All data accessed by OYT is used exclusively to power features within the app itself:</p>
     <ul>
-        <li>Location data is used to detect zone arrivals/departures and create time blocks.</li>
-        <li>Motion data is used to improve tracking accuracy and detect walking vs. driving.</li>
-        <li>Health data is used to enrich time blocks with activity context.</li>
-        <li>Camera, microphone, and photo data is used only when you explicitly activate Journal features.</li>
+        <li>Location data is used to detect zone arrivals/departures and create time blocks in your timeline.</li>
+        <li>Motion data is used to improve tracking accuracy — distinguishing walking from driving, for example.</li>
+        <li>Health data is used to enrich time blocks with context such as sleep duration and workout activity.</li>
+        <li>Camera, microphone, photo, and speech data is used only when you explicitly activate Journal features.</li>
     </ul>
-    <p>We do not use your data for advertising, profiling, or any purpose outside the app's core tracking functionality.</p>
+    <p>We do not use your data for advertising, profiling, analytics, or any purpose outside the app's core functionality.</p>
 
     <h2>4. Data Storage &amp; Security</h2>
-    <p>All data is stored locally on your device using Apple's SwiftData framework and iCloud (if you have iCloud enabled for the app). <strong>OYT does not operate any servers or databases that receive your personal data.</strong></p>
-    <p>Your data is protected by your device's built-in security (Face ID, passcode encryption, Secure Enclave).</p>
+    <p>All data is stored locally on your device using Apple's SwiftData framework. If you have iCloud enabled for OYT, your data may sync via iCloud to your other Apple devices — this is governed by Apple's iCloud privacy policy and is encrypted end-to-end.</p>
+    <p><strong>OYT does not operate any servers or databases that receive your personal data.</strong> Your location history, time blocks, zones, and journal entries never leave your device outside of iCloud sync.</p>
+    <p>Your data is protected by your device's built-in security — Face ID, Touch ID, passcode encryption, and the Secure Enclave.</p>
 
     <h2>5. Third-Party Sharing</h2>
-    <p>OYT does not sell, share, or transmit your personal data to any third parties. We do not use third-party analytics SDKs, advertising networks, or crash reporting services that collect personal data.</p>
+    <p>OYT does not sell, share, or transmit your personal data to any third parties. There are no third-party analytics SDKs, advertising networks, or crash reporting services embedded in the app that collect personal data.</p>
 
     <h2>6. Data Retention &amp; Deletion</h2>
-    <p>Your data lives on your device for as long as you have the app installed. To delete all data, simply delete the OYT app from your iPhone. Deleting the app permanently removes all stored time blocks, zones, journal entries, and settings.</p>
+    <p>Your data lives on your device for as long as OYT is installed. To delete all data permanently, delete the OYT app from your iPhone. This removes all stored time blocks, zones, journal entries, and preferences.</p>
+    <p>If iCloud sync is enabled, deleting the app and its associated iCloud data from Settings → Apple ID → iCloud → Manage Storage will remove all synced data.</p>
 
     <h2>7. Children's Privacy</h2>
-    <p>OYT is not directed at children under the age of 13 and we do not knowingly collect data from children.</p>
+    <p>OYT is not directed at children under the age of 13 and we do not knowingly collect data from children. If you believe a child has used OYT and you have concerns, contact us at <a href="mailto:support@oytapp.com">support@oytapp.com</a>.</p>
 
     <h2>8. Changes to This Policy</h2>
-    <p>If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page and notify users via an in-app notice on the next app launch.</p>
+    <p>If we make material changes to this policy, we will update the "Last updated" date above and notify users via an in-app notice on the next app launch after the change takes effect.</p>
 
     <h2>9. Contact</h2>
-    <p>Questions or concerns about your privacy? Reach us at <a href="mailto:support@oytapp.com">support@oytapp.com</a>.</p>
+    <p>Questions or concerns about your privacy? We're happy to help.<br>
+    Email: <a href="mailto:support@oytapp.com">support@oytapp.com</a></p>
+
 </main>
-<footer>© 2025 OYT — Own Your Time &nbsp;·&nbsp; <a href="mailto:support@oytapp.com">support@oytapp.com</a></footer>
+
+<footer>
+    <div class="footer-inner">
+        <span class="footer-logo">OYT</span>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="mailto:support@oytapp.com">Support</a>
+            <span style="color:var(--text-3)">© 2026 OYT</span>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

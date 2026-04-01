@@ -11,36 +11,47 @@
 
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">OYT</a>
+            <!-- Swap src for your real logo image when ready -->
+            <a href="#" class="logo-link">
+                <span class="logo">OYT</span>
+            </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
+                <a href="#screenshots">Screenshots</a>
                 <a href="#pricing">Pricing</a>
-                <a href="mailto:support@oytapp.com" class="nav-cta">Contact Support</a>
+                <a href="#about">About</a>
+                <a href="mailto:support@oytapp.com" class="nav-cta">Support</a>
             </div>
         </div>
     </nav>
 
+    <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
     <header class="hero">
         <div class="hero-content">
-            <h1>Own Your Time.</h1>
+            <div class="hero-eyebrow">Available on iPhone</div>
+            <h1>Own Your Time</h1>
             <p>See exactly where your life goes. OYT automatically tracks your locations, routines, and movement so you can take your time back.</p>
             <div class="hero-actions">
-                <a href="#" class="btn-primary">Download on the App Store</a>
+                <a href="#" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:-3px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download on the App Store
+                </a>
             </div>
-            <p class="subtext">7-Day Free Trial. No commitment.</p>
+            <p class="subtext">7-Day Free Trial &nbsp;·&nbsp; No commitment</p>
         </div>
-        
+
         <div class="hero-image-container">
             <img src="hero-mockup.png" alt="OYT Dashboard" class="app-screenshot">
         </div>
     </header>
 
+    <!-- ─── FEATURES ─────────────────────────────────────────────────────── -->
     <section id="features" class="section">
         <div class="section-header">
             <h2>Silent tracking. Brilliant insights.</h2>
             <p>Everything happens automatically in the background.</p>
         </div>
-        
+
         <div class="grid">
             <div class="card">
                 <div class="card-icon">📍</div>
@@ -61,7 +72,7 @@
                 <div class="card-icon">🧠</div>
                 <div class="badge">New</div>
                 <h3>Adaptive Zones</h3>
-                <p>Save your favorite places. OYT learns your routines and retroactively updates your timeline history.</p>
+                <p>Save your favorite places. OYT learns your routines and retroactively updates your entire timeline history.</p>
             </div>
             <div class="card">
                 <div class="card-icon">📊</div>
@@ -76,12 +87,102 @@
         </div>
     </section>
 
+    <!-- ─── SCREENSHOTS ───────────────────────────────────────────────────── -->
+    <section id="screenshots" class="section screenshots-section">
+        <div class="section-header">
+            <h2>Every hour, accounted for.</h2>
+            <p>A living timeline of your life — built automatically.</p>
+        </div>
+
+        <div class="screenshots-row">
+
+            <div class="phone-wrap">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <div class="screen-preview screen-dashboard">
+                        <div class="screen-label-top">Today</div>
+                        <div class="timeline-bars">
+                            <div class="t-bar" style="background:#34C759;height:52px;"></div>
+                            <div class="t-bar" style="background:#FF9500;height:36px;"></div>
+                            <div class="t-bar" style="background:#007AFF;height:72px;"></div>
+                            <div class="t-bar" style="background:#FF2D55;height:28px;"></div>
+                            <div class="t-bar" style="background:#AF52DE;height:48px;"></div>
+                            <div class="t-bar" style="background:#5AC8FA;height:32px;"></div>
+                        </div>
+                        <div class="ring-row">
+                            <div class="mini-ring" style="--c:#34C759;--pct:78%"></div>
+                            <div class="mini-ring" style="--c:#FF9500;--pct:55%"></div>
+                            <div class="mini-ring" style="--c:#AF52DE;--pct:40%"></div>
+                        </div>
+                        <div class="screen-label-bottom">Dashboard</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-wrap">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <div class="screen-preview screen-report">
+                        <div class="screen-label-top">This Week</div>
+                        <div class="report-bars">
+                            <div class="r-row"><span class="r-dot" style="background:#007AFF"></span><div class="r-fill" style="width:70%;background:#007AFF"></div></div>
+                            <div class="r-row"><span class="r-dot" style="background:#34C759"></span><div class="r-fill" style="width:45%;background:#34C759"></div></div>
+                            <div class="r-row"><span class="r-dot" style="background:#FF9500"></span><div class="r-fill" style="width:30%;background:#FF9500"></div></div>
+                            <div class="r-row"><span class="r-dot" style="background:#AF52DE"></span><div class="r-fill" style="width:55%;background:#AF52DE"></div></div>
+                            <div class="r-row"><span class="r-dot" style="background:#FF2D55"></span><div class="r-fill" style="width:20%;background:#FF2D55"></div></div>
+                        </div>
+                        <div class="screen-label-bottom">Weekly Report</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-wrap">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <div class="screen-preview screen-zones">
+                        <div class="screen-label-top">My Zones</div>
+                        <div class="zone-list">
+                            <div class="z-chip" style="border-color:#007AFF">🏠 Home</div>
+                            <div class="z-chip" style="border-color:#FF9500">💼 Office</div>
+                            <div class="z-chip" style="border-color:#34C759">🏋️ LA Fitness</div>
+                            <div class="z-chip" style="border-color:#FF2D55">🍕 Favourite Spot</div>
+                            <div class="z-chip" style="border-color:#AF52DE">🎮 Friend's Place</div>
+                        </div>
+                        <div class="screen-label-bottom">Smart Zones</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-wrap">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <div class="screen-preview screen-goals">
+                        <div class="screen-label-top">Goals</div>
+                        <div class="goal-rings-display">
+                            <div class="big-ring" style="--c:#34C759;--pct:75%">
+                                <div class="ring-inner-text">75%</div>
+                            </div>
+                        </div>
+                        <div class="goal-chips">
+                            <div class="goal-chip">Gym 3×/wk</div>
+                            <div class="goal-chip">Sleep 7h</div>
+                            <div class="goal-chip">Social 5h</div>
+                        </div>
+                        <div class="screen-label-bottom">Goal Tracking</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ─── PRICING ───────────────────────────────────────────────────────── -->
     <section id="pricing" class="section pricing-section">
         <div class="section-header">
             <h2>Start free. Stay in control.</h2>
             <p>All plans include a 7-day free trial. Cancel anytime.</p>
         </div>
-        
+
         <div class="pricing-grid">
             <div class="pricing-card">
                 <h3>Monthly</h3>
@@ -107,11 +208,46 @@
                     <li>Priority support</li>
                     <li>Support an indie developer</li>
                 </ul>
-                <a href="#" class="btn-primary" style="width: 100%; text-align: center; display: block;">Start Free Trial</a>
+                <a href="#" class="btn-primary" style="width:100%;text-align:center;display:block;">Start Free Trial</a>
             </div>
         </div>
     </section>
 
+    <!-- ─── ABOUT ─────────────────────────────────────────────────────────── -->
+    <section id="about" class="section about-section">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="about-eyebrow">The Story</div>
+                <h2>Built by one person.<br>For real people.</h2>
+                <p>OYT started with a simple, uncomfortable question: <em>where does my time actually go?</em></p>
+                <p>I'd end a week feeling busy but having nothing to show for it. I couldn't tell how many hours I'd spent at work versus home, or whether I'd actually made it to the gym as often as I thought. I wanted data — not estimates, not calendar blocks, but a real record of my life.</p>
+                <p>So I built OYT. What started as a personal experiment became a fully automatic time tracker that runs silently in the background, turns your real-world movement into a timeline, and gives you the kind of honest life audit that actually changes behavior.</p>
+                <div class="about-sig">
+                    <div class="sig-avatar">JW</div>
+                    <div>
+                        <div class="sig-name">Jake Wilson</div>
+                        <div class="sig-title">Developer, OYT</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-card-stack">
+                <div class="about-stat-card">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">On-device — your data never leaves your iPhone</div>
+                </div>
+                <div class="about-stat-card">
+                    <div class="stat-num">0</div>
+                    <div class="stat-label">External servers. Zero cloud tracking.</div>
+                </div>
+                <div class="about-stat-card">
+                    <div class="stat-num">1</div>
+                    <div class="stat-label">Developer. Built and maintained solo with care.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ────────────────────────────────────────────────────────── -->
     <footer>
         <div class="footer-container">
             <div class="footer-left">
