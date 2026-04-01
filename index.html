@@ -28,7 +28,7 @@
     <header class="hero">
         <div class="hero-content">
             <div class="hero-eyebrow">Available on iPhone</div>
-            <h1>Own Your Time</h1>
+            <h1>Own Your <span class="accent-word">Time</span></h1>
             <p>See exactly where your life goes. OYT automatically tracks your locations, routines, and movement so you can take your time back.</p>
             <div class="hero-actions">
                 <a href="#" class="btn-primary">
@@ -42,12 +42,13 @@
     </header>
 
     <!-- ─── SCREENSHOTS ───────────────────────────────────────────────────── -->
-    <section id="screenshots" class="section screenshots-section">
+    <section id="screenshots" class="section screenshots-section fade-up">
         <div class="section-header">
             <h2>Every hour, accounted for.</h2>
             <p>A living timeline of your life — built automatically.</p>
         </div>
 
+        <div class="screenshots-glow-wrap">
         <div class="screenshots-row">
 
             <div class="phone-wrap">
@@ -128,10 +129,11 @@
             </div>
 
         </div>
+        </div><!-- /.screenshots-glow-wrap -->
     </section>
 
     <!-- ─── FEATURES ─────────────────────────────────────────────────────── -->
-    <section id="features" class="section">
+    <section id="features" class="section fade-up">
         <div class="section-header">
             <h2>Silent tracking. Brilliant insights.</h2>
             <p>Everything happens automatically in the background.</p>
@@ -173,7 +175,7 @@
     </section>
 
     <!-- ─── PRICING ───────────────────────────────────────────────────────── -->
-    <section id="pricing" class="section pricing-section">
+    <section id="pricing" class="section pricing-section fade-up">
         <div class="section-header">
             <h2>Start free. Stay in control.</h2>
             <p>All plans include a 7-day free trial. Cancel anytime.</p>
@@ -210,7 +212,7 @@
     </section>
 
     <!-- ─── ABOUT ─────────────────────────────────────────────────────────── -->
-    <section id="about" class="section about-section">
+    <section id="about" class="section about-section fade-up">
         <div class="about-grid">
             <div class="about-text">
                 <div class="about-eyebrow">The Story</div>
@@ -257,5 +259,34 @@
         </div>
     </footer>
 
+    <script>
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Hero content fades in immediately on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+                heroContent.style.opacity = '0';
+                heroContent.style.transform = 'translateY(20px)';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        heroContent.style.opacity = '1';
+                        heroContent.style.transform = 'translateY(0)';
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
