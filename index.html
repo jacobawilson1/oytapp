@@ -3,851 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OYT — Own Your Time</title>
-    <meta name="description" content="OYT automatically tracks where you spend your time — at work, the gym, home, and everywhere in between. Finally see the analytics behind your life.">
-    <meta property="og:title" content="OYT — Own Your Time">
-    <meta property="og:description" content="Automatic time tracking for your life. See exactly where every hour goes.">
-    <meta property="og:url" content="https://oytapp.com">
-    <meta property="og:type" content="website">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --bg:           #080810;
-            --surface:      #0E0E1A;
-            --card:         #121220;
-            --card-hover:   #181828;
-            --border:       rgba(255,255,255,0.07);
-            --border-hi:    rgba(255,255,255,0.13);
-            --text:         #F2F2F7;
-            --text-2:       rgba(242,242,247,0.58);
-            --text-3:       rgba(242,242,247,0.32);
-            --accent:       #F59E0B;
-            --accent-dim:   rgba(245,158,11,0.11);
-            --gradient:     linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
-            --r:            16px;
-            --r-lg:         24px;
-            --r-xl:         32px;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-
-        .gradient-text {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* ─── NAV ─── */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            height: 64px;
-            display: flex; align-items: center;
-            padding: 0 24px;
-            background: rgba(8,8,16,0.75);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border);
-            transition: background .3s;
-        }
-        .nav-inner {
-            max-width: 1120px; width: 100%; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .nav-logo {
-            font-size: 21px; font-weight: 900; letter-spacing: -0.5px;
-            text-decoration: none;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-        .nav-links a {
-            font-size: 14px; font-weight: 500; color: var(--text-2);
-            text-decoration: none; transition: color .2s;
-        }
-        .nav-links a:hover { color: var(--text); }
-        .nav-cta {
-            padding: 9px 20px !important;
-            background: var(--gradient) !important;
-            color: #000 !important;
-            font-weight: 700 !important;
-            border-radius: 100px !important;
-            transition: opacity .2s, transform .2s !important;
-        }
-        .nav-cta:hover { opacity: .88 !important; transform: translateY(-1px) !important; }
-        .nav-hamburger {
-            display: none; background: none; border: none;
-            color: var(--text); font-size: 22px; cursor: pointer; line-height: 1;
-        }
-
-        /* ─── HERO ─── */
-        #hero {
-            min-height: 100vh;
-            display: flex; align-items: center;
-            padding: 120px 0 80px;
-            position: relative; overflow: hidden;
-        }
-        .hero-glow {
-            position: absolute; inset: 0; z-index: 0;
-            background: radial-gradient(ellipse 90% 55% at 50% -5%, rgba(245,158,11,.13) 0%, transparent 65%);
-        }
-        .hero-grid {
-            position: absolute; inset: 0; z-index: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
-            background-size: 48px 48px;
-            -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 30%, transparent 75%);
-            mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 30%, transparent 75%);
-        }
-        .hero-inner {
-            position: relative; z-index: 1;
-            display: grid; grid-template-columns: 1fr 1fr;
-            align-items: center; gap: 64px;
-            max-width: 1120px; margin: 0 auto; padding: 0 24px;
-            width: 100%;
-        }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 14px;
-            background: var(--accent-dim);
-            border: 1px solid rgba(245,158,11,.28);
-            border-radius: 100px;
-            font-size: 13px; font-weight: 600; color: var(--accent);
-            margin-bottom: 24px;
-        }
-        .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: blink 2s infinite; }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
-        .hero-h1 {
-            font-size: clamp(46px, 5.5vw, 74px);
-            font-weight: 900; line-height: 1.0; letter-spacing: -2.5px;
-            margin-bottom: 22px;
-        }
-        .hero-sub {
-            font-size: 18px; color: var(--text-2); line-height: 1.75;
-            margin-bottom: 36px; max-width: 460px;
-        }
-        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 28px;
-            background: var(--gradient);
-            color: #000; font-weight: 700; font-size: 15px;
-            border-radius: 100px; text-decoration: none;
-            box-shadow: 0 8px 32px rgba(245,158,11,.22);
-            transition: transform .2s, opacity .2s;
-        }
-        .btn-primary:hover { transform: translateY(-2px); opacity: .9; }
-        .btn-ghost {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 28px;
-            background: transparent;
-            color: var(--text); font-weight: 600; font-size: 15px;
-            border: 1px solid var(--border-hi);
-            border-radius: 100px; text-decoration: none;
-            transition: background .2s;
-        }
-        .btn-ghost:hover { background: var(--card); }
-        .hero-stats { display: flex; gap: 36px; margin-top: 44px; flex-wrap: wrap; }
-        .stat-val {
-            font-size: 22px; font-weight: 900;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .stat-label { font-size: 12px; color: var(--text-3); margin-top: 2px; }
-
-        /* Phone mockup */
-        .hero-visual { display: flex; justify-content: center; align-items: center; }
-        .phone-wrap { position: relative; }
-        .phone-halo {
-            position: absolute; inset: -50px;
-            background: radial-gradient(ellipse 65% 65% at 50% 50%, rgba(245,158,11,.14) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .phone {
-            width: 248px; height: 506px;
-            background: #13131F;
-            border-radius: 44px;
-            border: 1.5px solid rgba(255,255,255,.11);
-            overflow: hidden; position: relative;
-            box-shadow: 0 0 0 1px rgba(0,0,0,.6), 0 40px 100px rgba(0,0,0,.65), inset 0 0 0 1px rgba(255,255,255,.04);
-        }
-        .phone-pill {
-            position: absolute; top: 13px; left: 50%; transform: translateX(-50%);
-            width: 96px; height: 26px;
-            background: #080810; border-radius: 20px; z-index: 10;
-        }
-        .phone-screen {
-            width: 100%; height: 100%;
-            padding: 52px 14px 20px;
-            background: linear-gradient(180deg, #0D0D1C 0%, #070710 100%);
-            display: flex; flex-direction: column; gap: 8px;
-        }
-        .ps-header { display: flex; justify-content: space-between; align-items: center; }
-        .ps-title { font-size: 11px; font-weight: 800; color: rgba(242,242,247,.9); letter-spacing: -.2px; }
-        .ps-score { font-size: 11px; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .ps-rings { display: flex; gap: 6px; justify-content: center; padding: 6px 0; }
-        .ps-ring { width: 50px; height: 50px; }
-        .ps-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-        .ps-blocks { display: flex; flex-direction: column; gap: 5px; margin-top: 2px; }
-        .ps-block {
-            height: 30px; border-radius: 9px;
-            display: flex; align-items: center; padding: 0 9px; gap: 6px;
-        }
-        .ps-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-        .ps-blabel { font-size: 9px; font-weight: 600; color: rgba(242,242,247,.82); }
-        .ps-btime { font-size: 9px; color: rgba(242,242,247,.38); margin-left: auto; }
-        .ps-bar-row { display: flex; gap: 3px; margin-top: 6px; padding: 0 2px; }
-        .ps-bar-seg { height: 5px; border-radius: 3px; flex: 1; }
-
-        /* ─── SECTION GLOBALS ─── */
-        .s-eye { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-        .s-title { font-size: clamp(30px, 3.8vw, 46px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 14px; }
-        .s-sub { font-size: 17px; color: var(--text-2); max-width: 520px; line-height: 1.75; margin-bottom: 60px; }
-
-        /* ─── FEATURES ─── */
-        #features { padding: 120px 0; }
-        .features-grid {
-            display: grid; grid-template-columns: repeat(3,1fr);
-            gap: 1px; background: var(--border);
-            border-radius: var(--r-lg); overflow: hidden;
-        }
-        .feat {
-            background: var(--card); padding: 34px 30px;
-            transition: background .2s;
-        }
-        .feat:hover { background: var(--card-hover); }
-        .feat-icon {
-            width: 46px; height: 46px; border-radius: 13px;
-            background: var(--accent-dim);
-            border: 1px solid rgba(245,158,11,.18);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px; margin-bottom: 18px;
-        }
-        .feat-title { font-size: 16px; font-weight: 700; margin-bottom: 7px; letter-spacing: -.2px; }
-        .feat-desc { font-size: 14px; color: var(--text-2); line-height: 1.65; }
-
-        /* ─── SCREENSHOTS ─── */
-        #screenshots { padding: 120px 0; }
-        .shots-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
-        .shot { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-        .shot-frame {
-            width: 100%; aspect-ratio: 9/19.5;
-            background: var(--card);
-            border-radius: 26px;
-            border: 1.5px solid rgba(255,255,255,.09);
-            overflow: hidden; position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,.5);
-            display: flex; flex-direction: column;
-        }
-        .shot-pill {
-            position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
-            width: 64px; height: 17px;
-            background: var(--bg); border-radius: 20px; z-index: 10;
-        }
-        .shot-body {
-            flex: 1; display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            gap: 10px; padding: 36px 14px 18px;
-        }
-        .shot-emoji { font-size: 26px; }
-        .shot-name { font-size: 12px; font-weight: 700; color: var(--text-2); text-align: center; }
-        .shot-bars { width: 78%; display: flex; flex-direction: column; gap: 5px; }
-        .shot-bar { height: 5px; border-radius: 3px; background: rgba(255,255,255,.07); }
-        .shot-label { font-size: 13px; font-weight: 600; color: var(--text-2); text-align: center; }
-
-        /* ─── PRICING ─── */
-        #pricing { padding: 120px 0; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; align-items: start; }
-        .p-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-xl); padding: 34px 28px;
-            position: relative; transition: border-color .2s;
-        }
-        .p-card:hover { border-color: var(--border-hi); }
-        .p-card.featured {
-            background: linear-gradient(145deg, #181828, #121220);
-            border-color: rgba(245,158,11,.38);
-            transform: scale(1.04);
-            box-shadow: 0 0 0 1px rgba(245,158,11,.12), 0 30px 80px rgba(0,0,0,.45);
-        }
-        .p-badge {
-            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-            padding: 4px 16px; background: var(--gradient);
-            border-radius: 100px; font-size: 11px; font-weight: 800; color: #000; white-space: nowrap;
-        }
-        .p-name { font-size: 13px; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
-        .p-price { font-size: 52px; font-weight: 900; letter-spacing: -2.5px; line-height: 1; }
-        .p-price sup { font-size: 18px; font-weight: 600; color: var(--text-2); vertical-align: super; letter-spacing: 0; }
-        .p-period { font-size: 13px; color: var(--text-3); margin: 4px 0 10px; }
-        .p-save {
-            display: inline-block; padding: 3px 11px;
-            background: rgba(245,158,11,.11); border-radius: 100px;
-            font-size: 12px; font-weight: 700; color: var(--accent);
-            margin-bottom: 20px;
-        }
-        .p-divider { height: 1px; background: var(--border); margin-bottom: 22px; }
-        .p-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-        .p-list li { display: flex; gap: 10px; font-size: 14px; color: var(--text-2); align-items: flex-start; }
-        .p-list li::before { content: '✓'; color: var(--accent); font-weight: 800; font-size: 11px; margin-top: 3px; flex-shrink: 0; }
-        .p-btn {
-            display: block; width: 100%; margin-top: 26px; padding: 13px;
-            text-align: center; background: var(--gradient);
-            color: #000; font-weight: 700; font-size: 15px;
-            border-radius: 14px; text-decoration: none;
-            transition: opacity .2s, transform .2s;
-        }
-        .p-btn:hover { opacity: .88; transform: translateY(-1px); }
-        .p-btn.outline {
-            background: transparent; color: var(--text);
-            border: 1px solid var(--border-hi);
-        }
-        .p-btn.outline:hover { background: var(--card-hover); }
-
-        /* ─── FAQ ─── */
-        #faq { padding: 120px 0; }
-        .faq-wrap { max-width: 700px; margin: 60px auto 0; display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: var(--r-lg); overflow: hidden; }
-        .faq-item { background: var(--card); }
-        .faq-q {
-            width: 100%; background: none; border: none; cursor: pointer;
-            padding: 20px 26px; display: flex; justify-content: space-between; align-items: center;
-            gap: 16px; text-align: left; transition: background .2s;
-        }
-        .faq-q:hover { background: var(--card-hover); }
-        .faq-qt { font-size: 15px; font-weight: 600; color: var(--text); }
-        .faq-icon {
-            width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
-            border: 1.5px solid var(--border-hi);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-2); font-size: 11px;
-            transition: transform .3s, border-color .2s, color .2s;
-        }
-        .faq-item.open .faq-icon { transform: rotate(180deg); border-color: var(--accent); color: var(--accent); }
-        .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .3s; padding: 0 26px; }
-        .faq-item.open .faq-a { max-height: 220px; padding: 0 26px 20px; }
-        .faq-a p { font-size: 14px; color: var(--text-2); line-height: 1.75; }
-
-        /* ─── ABOUT ─── */
-        #about { padding: 120px 0; }
-        .about-inner { display: grid; grid-template-columns: auto 1fr; gap: 72px; align-items: center; }
-        .about-avatar {
-            width: 220px; height: 220px; border-radius: var(--r-xl);
-            background: var(--card); border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 72px; flex-shrink: 0;
-        }
-        .about-body { font-size: 16px; color: var(--text-2); line-height: 1.8; margin-bottom: 18px; }
-        .about-quote {
-            border-left: 3px solid var(--accent); padding-left: 20px;
-            font-size: 15px; font-style: italic; color: var(--text-2); line-height: 1.75;
-            margin-top: 20px;
-        }
-
-        /* ─── FOOTER ─── */
-        footer { border-top: 1px solid var(--border); padding: 44px 0; }
-        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .footer-brand { font-size: 19px; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .footer-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
-        .footer-links a { font-size: 14px; color: var(--text-2); text-decoration: none; transition: color .2s; }
-        .footer-links a:hover { color: var(--text); }
-        .footer-copy { width: 100%; text-align: center; font-size: 13px; color: var(--text-3); margin-top: 4px; }
-
-        /* ─── RESPONSIVE ─── */
-        @media (max-width: 1024px) {
-            .features-grid { grid-template-columns: repeat(2,1fr); }
-            .shots-grid { grid-template-columns: repeat(2,1fr); }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.mobile-open {
-                display: flex; flex-direction: column; align-items: flex-start;
-                position: fixed; inset: 64px 0 0;
-                background: rgba(8,8,16,.97); padding: 32px 24px; gap: 20px;
-                border-top: 1px solid var(--border); z-index: 99;
-            }
-            .nav-hamburger { display: block; }
-            .hero-inner { grid-template-columns: 1fr; }
-            .hero-visual { display: none; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .p-card.featured { transform: none; }
-            .features-grid { grid-template-columns: 1fr; }
-            .about-inner { grid-template-columns: 1fr; }
-            .about-avatar { width: 120px; height: 120px; font-size: 48px; }
-            .footer-inner { flex-direction: column; align-items: flex-start; }
-        }
-        @media (max-width: 520px) {
-            .shots-grid { grid-template-columns: repeat(2,1fr); }
-            .hero-stats { gap: 22px; }
-        }
-    </style>
+    <title>OYT | Own Your Time</title>
+    <meta name="description" content="Automatic time tracking for your life. See exactly where every hour goes.">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ═══════════════════ NAV ═══════════════════ -->
-<nav id="navbar">
-    <div class="nav-inner">
-        <a class="nav-logo" href="#hero">OYT</a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#screenshots">Screenshots</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#" class="nav-cta">Download →</a></li>
-        </ul>
-        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
-    </div>
-</nav>
-
-<!-- ═══════════════════ HERO ═══════════════════ -->
-<section id="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-inner">
-
-        <!-- Left: copy -->
-        <div>
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
-                Now available on iOS
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">OYT</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="mailto:support@oytapp.com" class="nav-cta">Contact Support</a>
             </div>
-            <h1 class="hero-h1">
-                Own Your<br>
-                <span class="gradient-text">Time.</span>
-            </h1>
-            <p class="hero-sub">
-                OYT automatically tracks where you spend your time — at work, the gym, home, and everywhere in between. Finally see the analytics behind your life.
-            </p>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Own Your Time.</h1>
+            <p>See exactly where your life goes. OYT automatically tracks your locations, routines, and movement so you can take your time back.</p>
             <div class="hero-actions">
-                <a href="#" class="btn-primary">⬇&nbsp; Download on App Store</a>
-                <a href="#features" class="btn-ghost">See how it works →</a>
+                <a href="#" class="btn-primary">Download on the App Store</a>
             </div>
-            <div class="hero-stats">
-                <div>
-                    <div class="stat-val">24/7</div>
-                    <div class="stat-label">Automatic tracking</div>
-                </div>
-                <div>
-                    <div class="stat-val">15+</div>
-                    <div class="stat-label">Life categories</div>
-                </div>
-                <div>
-                    <div class="stat-val">7-day</div>
-                    <div class="stat-label">Free trial</div>
-                </div>
+            <p class="subtext">7-Day Free Trial. No commitment.</p>
+        </div>
+        
+        <div class="hero-image-container">
+            <img src="hero-mockup.png" alt="OYT Dashboard" class="app-screenshot">
+        </div>
+    </header>
+
+    <section id="features" class="section">
+        <div class="section-header">
+            <h2>Silent tracking. Brilliant insights.</h2>
+            <p>Everything happens automatically in the background.</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">📍</div>
+                <h3>Zero Friction</h3>
+                <p>No tapping in or out. OYT uses Apple's native geofencing to log your arrivals and departures silently.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Goal Rings</h3>
+                <p>Set weekly targets for the gym, outdoors, or socializing. Close your rings just by living your life.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚶</div>
+                <h3>Smart Movement</h3>
+                <p>Built-in CoreMotion intelligence knows the difference between a drive to work and a walk in the park.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <div class="badge">New</div>
+                <h3>Adaptive Zones</h3>
+                <p>Save your favorite places. OYT learns your routines and retroactively updates your timeline history.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Life Audits</h3>
+                <p>Get a beautiful weekly breakdown of how your time split across every category in your life.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📓</div>
+                <h3>Contextual Journal</h3>
+                <p>Attach quick thoughts, voice memos, and photos directly to the specific places you visited today.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Right: phone mockup -->
-        <div class="hero-visual">
-            <div class="phone-wrap">
-                <div class="phone-halo"></div>
-                <div class="phone">
-                    <div class="phone-pill"></div>
-                    <div class="phone-screen">
-                        <div class="ps-header">
-                            <span class="ps-title">Today — Monday</span>
-                            <span class="ps-score">86/100</span>
-                        </div>
-
-                        <!-- Goal rings -->
-                        <div class="ps-rings">
-                            <div class="ps-ring">
-                                <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="21" fill="none" stroke="rgba(96,165,250,.14)" stroke-width="5"/><circle cx="26" cy="26" r="21" fill="none" stroke="#60A5FA" stroke-width="5" stroke-dasharray="132" stroke-dashoffset="30" stroke-linecap="round"/><text x="26" y="30" text-anchor="middle" fill="#60A5FA" font-size="9" font-weight="800" transform="rotate(90,26,26)">W</text></svg>
-                            </div>
-                            <div class="ps-ring">
-                                <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="21" fill="none" stroke="rgba(167,139,250,.14)" stroke-width="5"/><circle cx="26" cy="26" r="21" fill="none" stroke="#A78BFA" stroke-width="5" stroke-dasharray="132" stroke-dashoffset="18" stroke-linecap="round"/><text x="26" y="30" text-anchor="middle" fill="#A78BFA" font-size="9" font-weight="800" transform="rotate(90,26,26)">S</text></svg>
-                            </div>
-                            <div class="ps-ring">
-                                <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="21" fill="none" stroke="rgba(52,211,153,.14)" stroke-width="5"/><circle cx="26" cy="26" r="21" fill="none" stroke="#34D399" stroke-width="5" stroke-dasharray="132" stroke-dashoffset="76" stroke-linecap="round"/><text x="26" y="30" text-anchor="middle" fill="#34D399" font-size="9" font-weight="800" transform="rotate(90,26,26)">G</text></svg>
-                            </div>
-                            <div class="ps-ring">
-                                <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="21" fill="none" stroke="rgba(251,146,60,.14)" stroke-width="5"/><circle cx="26" cy="26" r="21" fill="none" stroke="#FB923C" stroke-width="5" stroke-dasharray="132" stroke-dashoffset="50" stroke-linecap="round"/><text x="26" y="30" text-anchor="middle" fill="#FB923C" font-size="9" font-weight="800" transform="rotate(90,26,26)">H</text></svg>
-                            </div>
-                        </div>
-
-                        <!-- Time blocks -->
-                        <div class="ps-blocks">
-                            <div class="ps-block" style="background:rgba(167,139,250,.09)">
-                                <div class="ps-dot" style="background:#A78BFA"></div>
-                                <span class="ps-blabel">Sleep</span>
-                                <span class="ps-btime">11p – 7a</span>
-                            </div>
-                            <div class="ps-block" style="background:rgba(96,165,250,.09)">
-                                <div class="ps-dot" style="background:#60A5FA"></div>
-                                <span class="ps-blabel">Work</span>
-                                <span class="ps-btime">8:00 – 5:00</span>
-                            </div>
-                            <div class="ps-block" style="background:rgba(52,211,153,.09)">
-                                <div class="ps-dot" style="background:#34D399"></div>
-                                <span class="ps-blabel">Gym</span>
-                                <span class="ps-btime">5:30 – 6:45</span>
-                            </div>
-                            <div class="ps-block" style="background:rgba(251,146,60,.09)">
-                                <div class="ps-dot" style="background:#FB923C"></div>
-                                <span class="ps-blabel">Home</span>
-                                <span class="ps-btime">7:00 PM →</span>
-                            </div>
-                        </div>
-
-                        <!-- 24h bar -->
-                        <div class="ps-bar-row" style="margin-top:8px">
-                            <div class="ps-bar-seg" style="background:#A78BFA;flex:3"></div>
-                            <div class="ps-bar-seg" style="background:#60A5FA;flex:5"></div>
-                            <div class="ps-bar-seg" style="background:rgba(245,158,11,.4);flex:1"></div>
-                            <div class="ps-bar-seg" style="background:#34D399;flex:1.5"></div>
-                            <div class="ps-bar-seg" style="background:#FB923C;flex:3.5"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="pricing" class="section pricing-section">
+        <div class="section-header">
+            <h2>Start free. Stay in control.</h2>
+            <p>All plans include a 7-day free trial. Cancel anytime.</p>
         </div>
-
-    </div>
-</section>
-
-<!-- ═══════════════════ FEATURES ═══════════════════ -->
-<section id="features">
-    <div class="container">
-        <div class="s-eye">Features</div>
-        <h2 class="s-title">Built around your <span class="gradient-text">real life</span></h2>
-        <p class="s-sub">No manual check-ins. No forgotten logs. OYT runs quietly in the background and builds your day automatically.</p>
-
-        <div class="features-grid">
-            <div class="feat">
-                <div class="feat-icon">📍</div>
-                <div class="feat-title">Automatic Location Tracking</div>
-                <div class="feat-desc">Define your zones once — gym, office, home — and OYT logs them every visit without you lifting a finger.</div>
-            </div>
-            <div class="feat">
-                <div class="feat-icon">🎯</div>
-                <div class="feat-title">Daily Goal Rings</div>
-                <div class="feat-desc">Set targets for sleep, work, fitness, and more. Watch your personal rings fill as you move through the day.</div>
-            </div>
-            <div class="feat">
-                <div class="feat-icon">📊</div>
-                <div class="feat-title">Weekly Life Audit</div>
-                <div class="feat-desc">Every week, get a full breakdown of how your time actually split across every category in your life.</div>
-            </div>
-            <div class="feat">
-                <div class="feat-icon">🚶</div>
-                <div class="feat-title">Smart Movement Detection</div>
-                <div class="feat-desc">OYT knows the difference between driving, walking, and sitting still — and logs each one as its own category.</div>
-            </div>
-            <div class="feat">
-                <div class="feat-icon">🗺️</div>
-                <div class="feat-title">Custom Zones</div>
-                <div class="feat-desc">Save any place on the map as a named zone. OYT will automatically detect every visit — even past ones.</div>
-            </div>
-            <div class="feat">
-                <div class="feat-icon">📔</div>
-                <div class="feat-title">Daily Journal</div>
-                <div class="feat-desc">Attach quick thoughts, voice notes, or photos to any moment in your day — right inside your timeline.</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════ SCREENSHOTS ═══════════════════ -->
-<section id="screenshots">
-    <div class="container">
-        <div class="s-eye">The App</div>
-        <h2 class="s-title">Everything you need, <span class="gradient-text">nothing you don't</span></h2>
-
-        <div class="shots-grid">
-            <!-- Today -->
-            <div class="shot">
-                <div class="shot-frame">
-                    <div class="shot-pill"></div>
-                    <div class="shot-body" style="background:linear-gradient(160deg,#0D0D1C,#131328)">
-                        <div class="shot-emoji">📱</div>
-                        <div class="shot-name">Today View</div>
-                        <div class="shot-bars">
-                            <div class="shot-bar" style="width:90%;background:rgba(96,165,250,.35)"></div>
-                            <div class="shot-bar" style="width:60%;background:rgba(52,211,153,.35)"></div>
-                            <div class="shot-bar" style="width:75%;background:rgba(251,146,60,.35)"></div>
-                            <div class="shot-bar" style="width:42%;background:rgba(245,158,11,.35)"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shot-label">Today</div>
-            </div>
-
-            <!-- Timeline -->
-            <div class="shot">
-                <div class="shot-frame">
-                    <div class="shot-pill"></div>
-                    <div class="shot-body" style="background:linear-gradient(160deg,#0A0E1C,#0E1428)">
-                        <div class="shot-emoji">⏱️</div>
-                        <div class="shot-name">Timeline</div>
-                        <div class="shot-bars">
-                            <div class="shot-bar" style="width:95%;background:rgba(167,139,250,.35)"></div>
-                            <div class="shot-bar" style="width:80%;background:rgba(96,165,250,.35)"></div>
-                            <div class="shot-bar" style="width:55%;background:rgba(52,211,153,.35)"></div>
-                            <div class="shot-bar" style="width:70%;background:rgba(251,146,60,.35)"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shot-label">Timeline</div>
-            </div>
-
-            <!-- Goal Rings -->
-            <div class="shot">
-                <div class="shot-frame">
-                    <div class="shot-pill"></div>
-                    <div class="shot-body" style="background:linear-gradient(160deg,#0C140E,#0A1208)">
-                        <div class="shot-emoji">🎯</div>
-                        <div class="shot-name">Goal Rings</div>
-                        <div class="shot-bars">
-                            <div class="shot-bar" style="width:88%;background:rgba(52,211,153,.35)"></div>
-                            <div class="shot-bar" style="width:65%;background:rgba(245,158,11,.35)"></div>
-                            <div class="shot-bar" style="width:92%;background:rgba(96,165,250,.35)"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shot-label">Goal Rings</div>
-            </div>
-
-            <!-- Weekly Report -->
-            <div class="shot">
-                <div class="shot-frame">
-                    <div class="shot-pill"></div>
-                    <div class="shot-body" style="background:linear-gradient(160deg,#140E0A,#1A1008)">
-                        <div class="shot-emoji">📊</div>
-                        <div class="shot-name">Weekly Report</div>
-                        <div class="shot-bars">
-                            <div class="shot-bar" style="width:100%;background:rgba(251,146,60,.35)"></div>
-                            <div class="shot-bar" style="width:72%;background:rgba(245,158,11,.35)"></div>
-                            <div class="shot-bar" style="width:58%;background:rgba(52,211,153,.35)"></div>
-                            <div class="shot-bar" style="width:83%;background:rgba(96,165,250,.35)"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shot-label">Weekly Report</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════ PRICING ═══════════════════ -->
-<section id="pricing">
-    <div class="container">
-        <div class="s-eye">Pricing</div>
-        <h2 class="s-title">Start free. <span class="gradient-text">Stay in control.</span></h2>
-        <p class="s-sub">Try every feature free for 7 days. No credit card required to start.</p>
-
+        
         <div class="pricing-grid">
-
-            <!-- Free Trial -->
-            <div class="p-card">
-                <div class="p-name">Free Trial</div>
-                <div class="p-price">$0</div>
-                <div class="p-period">7 days · all features included</div>
-                <div class="p-divider"></div>
-                <ul class="p-list">
-                    <li>Automatic location tracking</li>
-                    <li>Daily goal rings</li>
-                    <li>Weekly life audit</li>
-                    <li>Unlimited zones</li>
-                    <li>Journal with voice &amp; photos</li>
-                    <li>No credit card required</li>
+            <div class="pricing-card">
+                <h3>Monthly</h3>
+                <div class="price">$5<span> / mo</span></div>
+                <p class="billing-text">Billed monthly after trial</p>
+                <ul class="feature-list">
+                    <li>Unlimited Smart Zones</li>
+                    <li>Full timeline history</li>
+                    <li>Advanced goal tracking</li>
+                    <li>Unlimited journal entries</li>
                 </ul>
-                <a href="#" class="p-btn outline">Start Free Trial →</a>
+                <a href="#" class="btn-secondary">Start Free Trial</a>
             </div>
 
-            <!-- Monthly -->
-            <div class="p-card featured">
-                <div class="p-badge">Most Popular</div>
-                <div class="p-name">Monthly</div>
-                <div class="p-price"><sup>$</sup>5</div>
-                <div class="p-period">per month · billed monthly</div>
-                <div class="p-divider"></div>
-                <ul class="p-list">
-                    <li>Everything in Free Trial</li>
-                    <li>Full tracking history</li>
-                    <li>Smart zone suggestions</li>
-                    <li>Live Activity on lock screen</li>
-                    <li>Retroactive history updates</li>
-                    <li>Cancel anytime</li>
-                </ul>
-                <a href="#" class="p-btn">Get Monthly →</a>
-            </div>
-
-            <!-- Annual -->
-            <div class="p-card">
-                <div class="p-name">Annual</div>
-                <div class="p-price"><sup>$</sup>30</div>
-                <div class="p-period">per year · just $2.50/month</div>
-                <div class="p-save">Save 50% vs monthly</div>
-                <div class="p-divider"></div>
-                <ul class="p-list">
+            <div class="pricing-card featured">
+                <div class="popular-badge">Best Value</div>
+                <h3>Annual</h3>
+                <div class="price">$30<span> / yr</span></div>
+                <p class="billing-text">Just $2.50 per month</p>
+                <ul class="feature-list">
                     <li>Everything in Monthly</li>
-                    <li>Best value</li>
+                    <li>Save 50% vs monthly</li>
                     <li>Priority support</li>
-                    <li>Early access to new features</li>
-                    <li>One simple annual payment</li>
+                    <li>Support an indie developer</li>
                 </ul>
-                <a href="#" class="p-btn">Get Annual →</a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════ FAQ ═══════════════════ -->
-<section id="faq">
-    <div class="container">
-        <div class="s-eye" style="text-align:center">FAQ</div>
-        <h2 class="s-title" style="text-align:center">Common <span class="gradient-text">questions</span></h2>
-
-        <div class="faq-wrap" id="faqWrap">
-
-            <div class="faq-item">
-                <button class="faq-q">
-                    <span class="faq-qt">Does OYT drain my battery?</span>
-                    <div class="faq-icon">▾</div>
-                </button>
-                <div class="faq-a"><p>OYT uses Apple's efficient geofencing API for background tracking — the same technology used by Maps and Waze. In real-world testing, battery impact is minimal and comparable to having Bluetooth enabled.</p></div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-q">
-                    <span class="faq-qt">Does the app need to be open to track my time?</span>
-                    <div class="faq-icon">▾</div>
-                </button>
-                <div class="faq-a"><p>No. OYT is built to run entirely in the background. Once your zones are set up, the app logs arrivals and departures automatically — even when your phone is locked and the app is closed.</p></div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-q">
-                    <span class="faq-qt">Is my data private? Does it leave my phone?</span>
-                    <div class="faq-icon">▾</div>
-                </button>
-                <div class="faq-a"><p>Your data stays on your device. All location and time data is stored locally using Apple's SwiftData framework. Nothing is uploaded to external servers. Your life is yours.</p></div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-q">
-                    <span class="faq-qt">Do I need an Apple Watch?</span>
-                    <div class="faq-icon">▾</div>
-                </button>
-                <div class="faq-a"><p>No. OYT works great with just your iPhone. If you have an Apple Watch, OYT will use your sleep data for more accurate rest tracking — but it's completely optional.</p></div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-q">
-                    <span class="faq-qt">What happens after the 7-day trial ends?</span>
-                    <div class="faq-icon">▾</div>
-                </button>
-                <div class="faq-a"><p>After your free trial you can choose a monthly ($5/mo) or annual ($30/yr) plan to keep full access. Your data and zones are always preserved — nothing gets deleted if your trial ends.</p></div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-q">
-                    <span class="faq-qt">Can I edit or correct my tracked time?</span>
-                    <div class="faq-icon">▾</div>
-                </button>
-                <div class="faq-a"><p>Yes. Every block on your timeline is fully editable. You can change the category, adjust start and end times, add labels, or delete anything that was tracked incorrectly.</p></div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-q">
-                    <span class="faq-qt">What iPhone do I need?</span>
-                    <div class="faq-icon">▾</div>
-                </button>
-                <div class="faq-a"><p>OYT requires iOS 17 or later, which runs on iPhone XS and newer. Live Activity features on the Dynamic Island and Lock Screen require iPhone 14 Pro or newer.</p></div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════ ABOUT ═══════════════════ -->
-<section id="about">
-    <div class="container">
-        <div class="about-inner">
-            <div class="about-avatar">👨‍💻</div>
-            <div>
-                <div class="s-eye">The Builder</div>
-                <h2 class="s-title">Built by someone who<br><span class="gradient-text">lives by this data</span></h2>
-                <p class="about-body">
-                    I'm Jake — a 26-year-old developer and analytics obsessive who genuinely believes time is the most important health metric we track. Not steps. Not sleep score. <em>Time.</em> Because time is the currency behind everything else you care about.
-                </p>
-                <p class="about-body">
-                    I built OYT to answer a question I couldn't find an answer to anywhere else: <em>where does my free time actually go?</em> The irony wasn't lost on me — I used my free time to build the tool that would help me understand it.
-                </p>
-                <blockquote class="about-quote">
-                    "Understanding where you spend your time gives you a clearer picture of your life than almost anything else. That was the goal — and OYT is how I live it every day."
-                </blockquote>
+                <a href="#" class="btn-primary" style="width: 100%; text-align: center; display: block;">Start Free Trial</a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer>
-    <div class="container">
-        <div class="footer-inner">
-            <div class="footer-brand">OYT</div>
-            <ul class="footer-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="mailto:support@oytapp.com">Support</a></li>
-            </ul>
-            <p class="footer-copy">© 2025 OYT — Own Your Time &nbsp;·&nbsp; Made with ☕ in Atlanta, GA</p>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="logo">OYT</span>
+                <p>© 2026 OYT. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <a href="mailto:support@oytapp.com">Support</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<script>
-    // ── Mobile nav ──
-    const ham = document.getElementById('hamburger');
-    const nav = document.getElementById('navLinks');
-    ham.addEventListener('click', () => {
-        const open = nav.classList.toggle('mobile-open');
-        ham.textContent = open ? '✕' : '☰';
-    });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        nav.classList.remove('mobile-open');
-        ham.textContent = '☰';
-    }));
-
-    // ── Scroll: deepen nav bg ──
-    window.addEventListener('scroll', () => {
-        document.getElementById('navbar').style.background =
-            window.scrollY > 24 ? 'rgba(8,8,16,.96)' : 'rgba(8,8,16,.75)';
-    }, { passive: true });
-
-    // ── FAQ accordion ──
-    document.querySelectorAll('.faq-q').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const item = btn.parentElement;
-            const isOpen = item.classList.contains('open');
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-            if (!isOpen) item.classList.add('open');
-        });
-    });
-</script>
 </body>
 </html>

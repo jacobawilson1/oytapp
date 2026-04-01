@@ -1,0 +1,346 @@
+/* Core iOS Variables */
+:root {
+    --bg-color: #000000;
+    --surface-color: #1C1C1E; /* iOS dark mode component gray */
+    --surface-hover: #2C2C2E;
+    --text-primary: #F2F2F7;
+    --text-secondary: #8E8E93;
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    /* Apple Pro contrast colors */
+    --accent-bg: #FFFFFF;
+    --accent-text: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* Nav - Frosted Glass */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav-cta {
+    background: var(--surface-color);
+    color: var(--text-primary) !important;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* Hero Section */
+.hero {
+    padding: 160px 24px 80px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 8vw, 72px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.4;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--accent-bg);
+    color: var(--accent-text);
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 17px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+}
+
+.btn-secondary {
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 17px;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--surface-hover);
+}
+
+.subtext {
+    font-size: 13px !important;
+    color: var(--text-secondary);
+    margin-top: 16px !important;
+}
+
+/* App Screenshot Mockup */
+.hero-image-container {
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.app-screenshot {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 32px;
+    border: 8px solid var(--surface-color);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* Generic Section Styles */
+.section {
+    padding: 100px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.section-header h2 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.section-header p {
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+/* Grid & Cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: var(--surface-color);
+    padding: 32px;
+    border-radius: 24px;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.badge {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: var(--accent-bg);
+    color: var(--accent-text);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Pricing */
+.pricing-section {
+    border-top: 1px solid var(--border-color);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: var(--surface-color);
+    padding: 40px;
+    border-radius: 32px;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.pricing-card.featured {
+    border: 1px solid var(--text-secondary);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-bg);
+    color: var(--accent-text);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.price {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin: 16px 0 8px;
+}
+
+.price span {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.billing-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.feature-list li {
+    font-size: 15px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    padding-left: 24px;
+    position: relative;
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--text-secondary);
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 40px 24px;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left p {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.footer-right {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-right a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { padding: 120px 24px 60px; }
+    .footer-container { flex-direction: column; gap: 24px; text-align: center; }
+}
