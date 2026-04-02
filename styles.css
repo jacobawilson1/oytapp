@@ -576,7 +576,14 @@ footer {
         position: absolute; left: 50%; transform: translateX(-50%);
     }
     .hero-inner { padding: 28px 20px 48px; gap: 28px; }
-    .hero-text h1 { white-space: normal; }
+
+    /* ── Letter-spacing relief on mobile ── */
+    .hero-text h1      { white-space: normal; letter-spacing: -0.5px; }
+    .section-header h2 { letter-spacing: -0.5px; }
+    .color-header h2   { letter-spacing: -0.5px; }
+    .about-text h2     { letter-spacing: -0.5px; }
+    .plan-price        { letter-spacing: -1px; }
+
     .hphone.left, .hphone.right { display: none; }
     .hphone.center { width: 200px; transform: none; }
     .hphone.center:hover { transform: translateY(-6px); }
@@ -593,4 +600,8 @@ footer {
     .color-section .section-inner,
     .screenshots-section .section-inner { padding: 60px 20px; }
     .cat-box { height: 64px; font-size: 9px; gap: 6px; }
+
+    /* Tighten further only what's needed at smallest sizes */
+    .hero-text h1 { letter-spacing: 0px; }
+    .plan-price   { font-size: 44px; letter-spacing: -0.5px; }
 }
