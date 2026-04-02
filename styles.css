@@ -13,8 +13,7 @@
 }
 
 * {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
-                 Roboto, Helvetica, sans-serif;
+    font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
