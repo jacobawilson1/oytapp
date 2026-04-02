@@ -266,14 +266,14 @@ nav.scrolled { border-bottom-color: var(--border); }
 }
 .cat-box svg { flex-shrink: 0; }
 
-/* Desktop: wider grid, taller boxes */
+/* Desktop: 8-column grid → 2 clean rows of 8 */
 @media (min-width: 768px) {
     .cat-boxes {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-        max-width: 640px;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 10px;
+        max-width: 860px;
     }
-    .cat-box { height: 96px; font-size: 12px; }
+    .cat-box { height: 96px; font-size: 11px; }
 }
 
 /* ── Features ────────────────────────────────────────────────────────── */

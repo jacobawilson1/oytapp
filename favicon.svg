@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- White background -->
+  <rect width="512" height="512" rx="112" fill="#ffffff"/>
+  <!-- OYT logotype centered -->
+  <text
+    x="256" y="330"
+    font-family="ui-rounded, SF Pro Rounded, -apple-system, sans-serif"
+    font-weight="900"
+    font-size="200"
+    fill="#1D1D1F"
+    text-anchor="middle"
+    letter-spacing="-4">OYT</text>
+</svg>
