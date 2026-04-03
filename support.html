@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — OYT</title>
+    <meta name="description" content="OYT Support. Get help with tracking, permissions, goals, and more.">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="favicon.png">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box; margin: 0; padding: 0;
+            font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        html { scroll-behavior: smooth; }
+        :root {
+            --bg:      #FFFFFF;
+            --bg-alt:  #F5F5F7;
+            --surface: #FFFFFF;
+            --border:  rgba(0,0,0,0.07);
+            --border-2:rgba(0,0,0,0.12);
+            --text:    #1D1D1F;
+            --text-2:  #6E6E73;
+            --text-3:  rgba(29,29,31,0.35);
+        }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        /* Nav */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 760px; margin: 0 auto;
+            padding: 0 24px; height: 56px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo { text-decoration: none; display: block; }
+        .nav-logo img { height: 24px; width: auto; display: block; }
+        .nav-back {
+            font-size: 14px; color: var(--text-2);
+            text-decoration: none; font-weight: 500; transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        /* Content */
+        main { max-width: 760px; margin: 0 auto; padding: 64px 24px 120px; }
+
+        .doc-eyebrow {
+            display: inline-block;
+            font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--text-2);
+            border: 1px solid var(--border-2);
+            padding: 4px 12px; border-radius: 20px;
+            margin-bottom: 18px;
+        }
+        .doc-title {
+            font-size: clamp(36px, 6vw, 52px);
+            font-weight: 800; letter-spacing: -2px; line-height: 1.1;
+            margin-bottom: 16px; color: var(--text);
+        }
+        .doc-subtitle {
+            font-size: 17px; color: var(--text-2); margin-bottom: 56px; line-height: 1.6;
+        }
+
+        /* Contact card */
+        .contact-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 18px; padding: 28px 30px;
+            margin-bottom: 56px;
+            display: flex; align-items: center; gap: 20px;
+        }
+        .contact-icon {
+            font-size: 32px; flex-shrink: 0;
+        }
+        .contact-body h3 {
+            font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px;
+        }
+        .contact-body p {
+            font-size: 14px; color: var(--text-2); margin: 0;
+        }
+        .contact-body a {
+            color: var(--text); font-weight: 600; text-decoration: none;
+        }
+        .contact-body a:hover { opacity: 0.65; }
+
+        /* FAQ */
+        h2 {
+            font-size: 19px; font-weight: 700;
+            letter-spacing: -0.3px; margin-bottom: 16px; color: var(--text);
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        h2:first-of-type { border-top: none; padding-top: 0; }
+
+        p { font-size: 15px; color: var(--text-2); margin-bottom: 14px; line-height: 1.7; }
+        p strong { color: var(--text); }
+        a { color: var(--text); font-weight: 500; }
+        a:hover { opacity: 0.65; }
+
+        ul { padding-left: 0; margin-bottom: 14px; list-style: none; }
+        li {
+            font-size: 15px; color: var(--text-2); line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 18px; position: relative;
+        }
+        li::before {
+            content: '·'; position: absolute; left: 3px;
+            color: var(--text-3); font-size: 18px; line-height: 1.4;
+        }
+        li strong { color: var(--text); font-weight: 600; }
+
+        /* FAQ cards */
+        .faq-grid {
+            display: grid; gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            margin: 0 0 48px;
+        }
+        .faq-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 16px; padding: 22px;
+            transition: box-shadow 0.2s;
+        }
+        .faq-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+        .faq-icon  { font-size: 20px; margin-bottom: 10px; }
+        .faq-q { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+        .faq-a { font-size: 13px; color: var(--text-2); line-height: 1.6; margin: 0; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px;
+        }
+        .footer-inner {
+            max-width: 760px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 13px; color: var(--text-2); text-decoration: none; }
+        .footer-links a:hover { color: var(--text); }
+
+        @media (max-width: 600px) {
+            .faq-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; gap: 16px; }
+            .doc-title { letter-spacing: -0.5px; }
+            .contact-card { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a class="nav-logo" href="index.html">
+            <img src="OYT-LetterLogo.png" alt="OYT">
+        </a>
+        <a class="nav-back" href="index.html">← oytapp.com</a>
+    </div>
+</nav>
+
+<main>
+
+    <div class="doc-eyebrow">Support</div>
+    <h1 class="doc-title">How can we help?</h1>
+    <p class="doc-subtitle">Find answers to common questions below, or reach out directly and we'll get back to you within 24 hours.</p>
+
+    <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-body">
+            <h3>Email Support</h3>
+            <p>For anything not covered below, email us at <a href="mailto:support@oytapp.com">support@oytapp.com</a>. We typically respond within one business day.</p>
+        </div>
+    </div>
+
+    <h2>Common Questions</h2>
+
+    <div class="faq-grid">
+        <div class="faq-card">
+            <div class="faq-icon">📍</div>
+            <div class="faq-q">Why does OYT need "Always On" location access?</div>
+            <p class="faq-a">OYT detects when you arrive at or leave your saved zones — like home, work, or the gym — and automatically logs your time in the background. Without "Always On" access, tracking only works while the app is open. Your location data never leaves your device.</p>
+        </div>
+        <div class="faq-card">
+            <div class="faq-icon">🔋</div>
+            <div class="faq-q">Will OYT drain my battery?</div>
+            <p class="faq-a">OYT uses Apple's geofencing APIs, which are designed to be extremely battery-efficient. The system only wakes OYT when you cross a zone boundary — it does not continuously poll your GPS. Most users see no measurable impact on battery life.</p>
+        </div>
+        <div class="faq-card">
+            <div class="faq-icon">😴</div>
+            <div class="faq-q">My sleep isn't showing up. What do I do?</div>
+            <p class="faq-a">OYT reads sleep data from Apple Health. Make sure your Apple Watch, Oura, or Whoop is syncing sleep to the Health app, then open OYT and pull down to refresh. You can also log sleep manually by tapping the sleep card on the Today tab.</p>
+        </div>
+        <div class="faq-card">
+            <div class="faq-icon">🏠</div>
+            <div class="faq-q">How do I set up my home and work zones?</div>
+            <p class="faq-a">Go to the Zones tab, tap the + button, and drop a pin at your location. Give it a name and assign it a category (Home, Work, Gym, etc.). OYT will automatically start logging time there whenever your device enters that area.</p>
+        </div>
+        <div class="faq-card">
+            <div class="faq-icon">📊</div>
+            <div class="faq-q">What is the OYT Score?</div>
+            <p class="faq-a">Your OYT Score (0–100) measures how well you owned your day. It's calculated from your core goals (sleep, work), flexible goals (gym, hobbies), and time diversity — rewarding a balanced, intentional day even without formal goals set for every category.</p>
+        </div>
+        <div class="faq-card">
+            <div class="faq-icon">🔒</div>
+            <div class="faq-q">Is my data private? Does OYT send anything to a server?</div>
+            <p class="faq-a">No. All your data — location history, time blocks, journal entries, and goals — is stored entirely on your device. OYT has no servers and does not transmit your personal data anywhere. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+        </div>
+        <div class="faq-card">
+            <div class="faq-icon">🗑️</div>
+            <div class="faq-q">How do I delete my data?</div>
+            <p class="faq-a">Delete the OYT app from your iPhone. This permanently removes all stored data. If you had iCloud enabled, also remove OYT data from Settings → Apple ID → iCloud → Manage Storage.</p>
+        </div>
+        <div class="faq-card">
+            <div class="faq-icon">💳</div>
+            <div class="faq-q">How do I manage or cancel my subscription?</div>
+            <p class="faq-a">Go to iPhone Settings → Apple ID → Subscriptions → OYT. You can cancel, change your plan, or view your billing date there. Cancellations take effect at the end of the current billing period.</p>
+        </div>
+    </div>
+
+    <h2>Still need help?</h2>
+    <p>If you didn't find what you were looking for, email us at <a href="mailto:support@oytapp.com">support@oytapp.com</a> with a description of your issue and your iPhone model and iOS version. We'll get back to you as soon as possible.</p>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <img src="OYT-LetterLogo.png" alt="OYT" style="height:22px;width:auto;opacity:0.55;">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy</a>
+            <span style="color:var(--text-3);font-size:13px">© 2026 OYT</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
