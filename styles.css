@@ -187,11 +187,11 @@ nav.scrolled { border-bottom-color: var(--border); }
 .hphone-img {
     display: block;
     flex-shrink: 0;
-    width: 150px;
+    width: 260px;
     height: auto;
 }
-.hphone-img--side { width: 132px; opacity: 0.85; }
-.hphone-img--center { width: 150px; transform: translateY(-14px); }
+.hphone-img--side { width: 230px; }
+.hphone-img--center { width: 260px; transform: translateY(-20px); }
 
 /* ── Color Section ───────────────────────────────────────────────────── */
 .color-section { background: var(--bg-alt); }
@@ -518,8 +518,8 @@ footer {
 /* ── Mobile ──────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
     .hero-inner { min-height: unset; padding-top: 36px; gap: 32px; }
-    .hphone-img--side { width: 108px; }
-    .hphone-img--center { width: 124px; }
+    .hphone-img--side { width: 180px; }
+    .hphone-img--center { width: 205px; }
 }
 @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -543,7 +543,6 @@ footer {
     .hphone-img--side {
         display: block;
         width: 170px;
-        opacity: 0.45;
         transform: translateY(28px);
         position: relative;
         z-index: 1;
