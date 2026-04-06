@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OYT — Own Your Time</title>
     <meta name="description" content="Automatic time tracking for your life. See exactly where every hour goes.">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
     <link rel="shortcut icon" href="favicon.ico">
-    <link rel="icon" href="favicon.png" type="image/png" sizes="512x512">
-    <link rel="apple-touch-icon" href="favicon.png" sizes="180x180">
     <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -268,6 +269,7 @@
             <p>A living timeline of your life — built automatically.</p>
         </div>
         <div class="phone-row-wrap">
+            <button class="carousel-btn carousel-btn--prev" aria-label="Previous">&#8249;</button>
             <div class="phone-row fade-up">
                 <div class="sp-wrap"><img src="today dark mode-portrait.png" alt="Today" class="sp-img"></div>
                 <div class="sp-wrap"><img src="dark mode activity list-portrait.png" alt="Activity List" class="sp-img"></div>
@@ -276,6 +278,7 @@
                 <div class="sp-wrap"><img src="dark mode goals-portrait.png" alt="Goals" class="sp-img"></div>
                 <div class="sp-wrap"><img src="dark mode profile-portrait.png" alt="Profile" class="sp-img"></div>
             </div>
+            <button class="carousel-btn carousel-btn--next" aria-label="Next">&#8250;</button>
         </div>
     </div>
 </section>
@@ -407,6 +410,29 @@
             hamburger.classList.remove('open');
         }
     });
+</script>
+
+<script>
+    // ── Screenshot carousel arrows ────────────────────────────────────────
+    const phoneRow  = document.querySelector('.phone-row');
+    const prevBtn   = document.querySelector('.carousel-btn--prev');
+    const nextBtn   = document.querySelector('.carousel-btn--next');
+
+    function slideAmount() {
+        const wrap = phoneRow.querySelector('.sp-wrap');
+        if (!wrap) return 220;
+        const gap = parseInt(getComputedStyle(phoneRow).gap) || 14;
+        return wrap.offsetWidth + gap;
+    }
+
+    if (prevBtn && nextBtn && phoneRow) {
+        prevBtn.addEventListener('click', () => {
+            phoneRow.scrollBy({ left: -slideAmount(), behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', () => {
+            phoneRow.scrollBy({ left: slideAmount(), behavior: 'smooth' });
+        });
+    }
 </script>
 
 </body>
