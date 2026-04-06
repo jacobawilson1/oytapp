@@ -553,19 +553,20 @@ footer {
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { justify-content: center; }
-    .phone-row { justify-content: flex-start; }
-    .phone-row-wrap::after {
-        content: '';
-        position: absolute;
-        top: 0; right: 0;
-        width: 80px; height: 100%;
-        background: linear-gradient(to right, transparent, var(--bg-alt));
-        pointer-events: none;
+    .phone-row {
+        justify-content: flex-start;
+        gap: 14px;
+        padding-left: 16px;
+        padding-right: 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
+    .sp-wrap { scroll-snap-align: start; }
     .cat-box { height: 72px; font-size: 10px; }
 }
 @media (max-width: 480px) {
-    .sp-img { width: 160px; }
+    .sp-img { width: 155px; }
+    .phone-row { gap: 12px; padding-left: 12px; }
     .section-inner { padding: 64px 20px; }
     .color-section .section-inner,
     .screenshots-section .section-inner { padding: 60px 20px; }
