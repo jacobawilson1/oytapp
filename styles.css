@@ -128,7 +128,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 .mobile-menu a:hover { background: var(--bg-alt); }
 
 /* ── Hero ────────────────────────────────────────────────────────────── */
-.hero { background: var(--bg); padding-top: 56px; }
+.hero { background: linear-gradient(180deg, #EBEBEB 0%, #FFFFFF 72%); padding-top: 56px; }
 .hero-inner {
     max-width: 1060px; margin: 0 auto;
     padding: 48px 24px 64px;
@@ -190,8 +190,6 @@ nav.scrolled { border-bottom-color: var(--border); }
     width: 170px;
     height: auto;
     transition: transform 0.35s ease;
-    mix-blend-mode: multiply;
-    filter: drop-shadow(0 32px 48px rgba(0,0,0,0.22)) drop-shadow(0 10px 20px rgba(0,0,0,0.13));
 }
 .hphone-img--side { width: 148px; opacity: 0.85; }
 .hphone-img--center { width: 170px; transform: translateY(-18px); }
@@ -314,10 +312,7 @@ nav.scrolled { border-bottom-color: var(--border); }
     display: block;
     width: 200px;
     height: auto;
-    transition: transform 0.3s ease;
-    filter: drop-shadow(0 36px 56px rgba(0,0,0,0.24)) drop-shadow(0 12px 24px rgba(0,0,0,0.14));
 }
-.sp-img:hover { transform: translateY(-8px); }
 
 /* ── Mock Screen Elements (used in hero + screenshots) ───────────────── */
 .mock-top-label {
@@ -547,9 +542,25 @@ footer {
     .about-text h2     { letter-spacing: -0.5px; }
     .plan-price        { letter-spacing: -1px; }
 
-    .hphone-img--side { display: none; }
-    .hphone-img--center { width: 260px; transform: none; }
-    .hphone-img--center:hover { transform: translateY(-8px); }
+    .hero-phones { align-items: center; }
+    .hphone-img--side {
+        display: block;
+        width: 185px;
+        opacity: 0.45;
+        transform: translateY(32px);
+        position: relative;
+        z-index: 1;
+        flex-shrink: 0;
+    }
+    .hphone-img--side:first-child { margin-right: -80px; }
+    .hphone-img--side:last-child  { margin-left:  -80px; }
+    .hphone-img--center {
+        width: 245px;
+        transform: none;
+        position: relative;
+        z-index: 2;
+    }
+    .hphone-img--center:hover { transform: none; }
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { justify-content: center; }
