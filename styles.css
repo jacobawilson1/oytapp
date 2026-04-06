@@ -295,21 +295,40 @@ nav.scrolled { border-bottom-color: var(--border); }
 .screenshots-section .section-inner { padding-top: 80px; padding-bottom: 80px; }
 
 .phone-row-wrap {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 .phone-row {
-    display: flex; gap: 20px;
-    justify-content: center; align-items: flex-end;
-    overflow-x: auto; padding-bottom: 8px;
+    display: flex; gap: 16px;
+    justify-content: flex-start; align-items: flex-end;
+    overflow-x: hidden; padding-bottom: 8px;
 }
 .phone-row::-webkit-scrollbar { height: 0; }
 
-.sp-wrap { flex-shrink: 0; }
-.sp-img {
-    display: block;
-    width: 200px;
-    height: auto;
+/* Desktop: all 6 auto-scale, first phone always anchored left */
+.sp-wrap { flex: 1; min-width: 100px; }
+.sp-img  { display: block; width: 100%; height: auto; }
+
+/* Carousel controls — centered below, hidden on desktop */
+.carousel-controls {
+    display: none;
+    justify-content: center;
+    gap: 12px;
 }
+.carousel-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-2);
+    background: var(--bg);
+    color: var(--text);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+    padding: 0;
+}
+.carousel-btn:hover { background: var(--bg-alt); border-color: var(--text-2); }
 
 /* ── Mock Screen Elements (used in hero + screenshots) ───────────────── */
 .mock-top-label {
@@ -553,20 +572,20 @@ footer {
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { justify-content: center; }
+    .carousel-controls { display: flex; }
     .phone-row {
-        justify-content: flex-start;
-        gap: 14px;
-        padding-left: 16px;
-        padding-right: 0;
+        overflow-x: auto;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
+        gap: 14px;
     }
-    .sp-wrap { scroll-snap-align: start; }
+    .sp-wrap { flex: none; min-width: unset; scroll-snap-align: start; }
+    .sp-img  { width: 190px; }
     .cat-box { height: 72px; font-size: 10px; }
 }
 @media (max-width: 480px) {
-    .sp-img { width: 155px; }
-    .phone-row { gap: 12px; padding-left: 12px; }
+    .sp-img { width: 150px; }
+    .phone-row { gap: 12px; }
     .section-inner { padding: 64px 20px; }
     .color-section .section-inner,
     .screenshots-section .section-inner { padding: 60px 20px; }
