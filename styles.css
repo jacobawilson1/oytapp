@@ -19,7 +19,8 @@
 
 html { scroll-behavior: smooth; }
 
-body { background: var(--bg); color: var(--text); line-height: 1.5; }
+body { background: var(--bg); color: var(--text); line-height: 1.5; overflow-x: hidden; }
+html { overflow-x: hidden; }
 
 /* ── Fade-up utility ─────────────────────────────────────────────────── */
 .fade-up {
@@ -189,6 +190,7 @@ nav.scrolled { border-bottom-color: var(--border); }
     width: 170px;
     height: auto;
     transition: transform 0.35s ease;
+    mix-blend-mode: multiply;
     filter: drop-shadow(0 32px 48px rgba(0,0,0,0.22)) drop-shadow(0 10px 20px rgba(0,0,0,0.13));
 }
 .hphone-img--side { width: 148px; opacity: 0.85; }
@@ -524,8 +526,8 @@ footer {
 /* ── Mobile ──────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
     .hero-inner { min-height: unset; padding-top: 36px; gap: 32px; }
-    .hphone { width: 118px; }
-    .hphone.center { width: 136px; }
+    .hphone-img--side { width: 120px; }
+    .hphone-img--center { width: 138px; }
 }
 @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -545,9 +547,9 @@ footer {
     .about-text h2     { letter-spacing: -0.5px; }
     .plan-price        { letter-spacing: -1px; }
 
-    .hphone.left, .hphone.right { display: none; }
-    .hphone.center { width: 200px; transform: none; }
-    .hphone.center:hover { transform: translateY(-6px); }
+    .hphone-img--side { display: none; }
+    .hphone-img--center { width: 260px; transform: none; }
+    .hphone-img--center:hover { transform: translateY(-8px); }
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { justify-content: center; }
@@ -555,8 +557,7 @@ footer {
     .cat-box { height: 72px; font-size: 10px; }
 }
 @media (max-width: 480px) {
-    .sp-frame   { width: 150px; }
-    .sp-screen  { min-height: 250px; }
+    .sp-img { width: 160px; }
     .section-inner { padding: 64px 20px; }
     .color-section .section-inner,
     .screenshots-section .section-inner { padding: 60px 20px; }
