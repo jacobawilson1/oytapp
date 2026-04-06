@@ -187,14 +187,11 @@ nav.scrolled { border-bottom-color: var(--border); }
 .hphone-img {
     display: block;
     flex-shrink: 0;
-    width: 170px;
+    width: 150px;
     height: auto;
-    transition: transform 0.35s ease;
 }
-.hphone-img--side { width: 148px; opacity: 0.85; }
-.hphone-img--center { width: 170px; transform: translateY(-18px); }
-.hphone-img--side:hover { transform: translateY(-6px); opacity: 1; }
-.hphone-img--center:hover { transform: translateY(-26px); }
+.hphone-img--side { width: 132px; opacity: 0.85; }
+.hphone-img--center { width: 150px; transform: translateY(-14px); }
 
 /* ── Color Section ───────────────────────────────────────────────────── */
 .color-section { background: var(--bg-alt); }
@@ -521,8 +518,8 @@ footer {
 /* ── Mobile ──────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
     .hero-inner { min-height: unset; padding-top: 36px; gap: 32px; }
-    .hphone-img--side { width: 120px; }
-    .hphone-img--center { width: 138px; }
+    .hphone-img--side { width: 108px; }
+    .hphone-img--center { width: 124px; }
 }
 @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -545,22 +542,21 @@ footer {
     .hero-phones { align-items: center; }
     .hphone-img--side {
         display: block;
-        width: 185px;
+        width: 170px;
         opacity: 0.45;
-        transform: translateY(32px);
+        transform: translateY(28px);
         position: relative;
         z-index: 1;
         flex-shrink: 0;
     }
-    .hphone-img--side:first-child { margin-right: -80px; }
-    .hphone-img--side:last-child  { margin-left:  -80px; }
+    .hphone-img--side:first-child { margin-right: -55px; }
+    .hphone-img--side:last-child  { margin-left:  -55px; }
     .hphone-img--center {
-        width: 245px;
+        width: 210px;
         transform: none;
         position: relative;
         z-index: 2;
     }
-    .hphone-img--center:hover { transform: none; }
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { justify-content: center; }
