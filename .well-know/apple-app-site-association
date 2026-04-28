@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "ZVNT4Y6F5N.com.jacobwilson.OYT---Own-Your-Time"
+        ],
+        "components": [
+          {
+            "/": "/join*"
+          }
+        ]
+      }
+    ]
+  }
+}
